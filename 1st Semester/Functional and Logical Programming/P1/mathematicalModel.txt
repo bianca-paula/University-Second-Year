@@ -1,0 +1,24 @@
+a) 
+findElement(e,l1l2..ln)=
+{
+	False, if n=0
+	True, if l1=e
+	findElement(e,l2l3..ln), otherwise
+}
+
+
+setsDifference(a1a2...an,b1b2...bm)= 
+	{ [], if n==0
+	  setsDifference(a2a3..an,b1b2..bm), if findElement(a1,b1b2..bm)==true
+	  a1 U setsDifference(a2a3..an,b1b2..bm, otherwise
+	}
+
+
+b)
+
+insertOne(l1,...,ln) =
+{
+	[], n = 0,
+        l1 U [1] U insertOne(l2,...,ln), if l1%2 == 0
+        l1 U insertOne(l2, ...,ln), otherwise
+}
