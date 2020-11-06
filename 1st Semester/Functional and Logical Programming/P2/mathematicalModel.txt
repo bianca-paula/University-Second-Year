@@ -1,0 +1,36 @@
+Model matematic:
+a)
+appendToList(l1...ln, e) =
+ 	[e], n = 0
+ 	l1 + appendToList(l2...ln), otherwise
+
+get_length(l1...ln) =
+	0, n = 0
+	1 + get_length(l2...ln), otherwise
+
+reverse_list(l1...ln) =
+ 	[], n = 0
+ 	appendToList(reverse_list(l2...ln), l1), otherwise
+
+addToListsSum(a1...an, b1...bm, c) =
+ 	[], n = 0 and m = 0 and c = 0
+ 	[1], n = 0 and m = 0 and c = 1
+ 	(b1 + c) + addToListsSum([], b2...bm, 0), n = 0 and b1 + c < 10
+ 	((b1 + c) % 10) + addToListsSum([], b2...bm, 1), n = 0 and b1 + c > 10
+ 	(a1 + b1 + c) + addToListsSum(a2...an, b2...bm, 0), a1 + b1 + c < 10
+ 	((a1 + b1 + c) % 10) + addToListsSum(a2...an, b2...bm, 1), a1 + b1 + c > 10
+
+
+sum_lists(a1...an, b1...bm) =
+ 	a1...an, m = 0
+ 	b1...bm, n = 0
+ 	reverse_list(addToListsSum(reverse_list(a1...an), reverse_list(b1...bm), 0)), n <= m
+ 	reverse_list(addToListsSum(reverse_list(b1...bm), reverse_list(a1...an), 0)), otherwise
+
+
+b)
+
+sublistSuccessor(l1...ln, list) = 
+ 	[], n = 0
+ 	successor(l1) + sublistSuccessor(l2...ln), is_list(l1) = True
+ 	l1 + sublistSuccessor(l2...ln), otherwise
